@@ -1,3 +1,3 @@
-# CSC-131-Project
+# CSC-132-Project
 # Final project repo for our CSC-132 project
 # Enter ideas for projects, and other important info here...
