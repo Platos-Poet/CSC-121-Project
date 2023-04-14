@@ -30,4 +30,3 @@ print(f"{pressure_dict}")
 sunrise_date = w.sunrise_time(timeformat='date')
 sunset_date = w.sunset_time(timeformat='date')
 print(f"Sunrise :{sunrise_date}\nSunset: {sunset_date}") # Prints Sunrise/Sunset as python datetime.datetime object
-
