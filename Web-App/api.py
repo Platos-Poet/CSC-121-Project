@@ -8,7 +8,7 @@ OPENWEATHERMAP_API_KEY = "b2f82104ab9851dcf5b08eb56d3ede6a"
 
 @app.route('/weather/<city>')
 def get_weather(city):
-    url = f'https://api.openweathermap.org/data/2.5/weather?q=Ruston&appid=b2f82104ab9851dcf5b08eb56d3ede6a'
+    url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid=b2f82104ab9851dcf5b08eb56d3ede6a'
     response = requests.get(url)
     if response.status_code == 200:
         weatherData = response.json()
