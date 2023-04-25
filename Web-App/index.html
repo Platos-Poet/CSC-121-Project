@@ -9,10 +9,29 @@
         <h1>Weather App</h1>
         <form>
             <label for="city">Enter city:</label>
-            <input type="text" name="city" id="city" placeholder="e.g. Ruston">
-            <button type="submit">Get Weather</button>
+            <input type="text" name="city" id="city" value="" placeholder="e.g. Ruston">
+            <button type="button" onclick="a()">Get Weather</button>
         </form>
-        <div id="weather-data"></div>
+        <div id="weather-data">
+        </div>
+        <script>
+            function a() {
+                let city = document.getElementById("city").value;
+                
+                getData(`http://localhost:5000/weather/${city}`).then((res) => {
+                    // console.log(res)
+                    document.getElementById("weather-data").innerHTML = ""
+                    Object.keys(res).forEach(e => {
+                        document.getElementById("weather-data").innerHTML += e +": " + res[e] + "<br />"
+                    });
+                });
+                document.getElementById("weather-data").style.display = "block";
+            }
+            async function  getData(url) {
+                let res = await fetch(url)
+                return res.json();
+            }
+        </script>
     </div>
 </body>
 </html>
