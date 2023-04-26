@@ -49,7 +49,7 @@ def One():
             sunsetdt = datetime.fromtimestamp(Sset)
             sunsetT = sunsetdt.strftime("%I:%M:%S %p")
             Sspeed = data["windSpeed"]
-            itemp = sensor.temperature
+            itemp = (sensor.temperature * 9/5 + 32)
             ihum = sensor.humidity
             window["temp"].update(f"Temperature: {tem}°F")
             window["pres"].update(f"Pressure: {pre} mb")
@@ -59,8 +59,7 @@ def One():
             window["speed"].update(f"Wind Speed: {Sspeed} mp/h")
             window['ihum'].update(f"Inside Humidity: {ihum}%")
             window['itemp'].update(f"Inside Temperature: {itemp}°F")
-            
-
+        
 
     window.close()
 
