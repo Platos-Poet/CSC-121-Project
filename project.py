@@ -14,9 +14,9 @@ speed = ""
 
 la.theme("Topanga")
 def One():
-    layout_template = [[la.Text(f"Temperature: {temp}", key = "temp", font = ("Helvetica", 15)), la.Push(), la.Text(f"Inside Temperature: ", font = ("Helvetica", 15))],
-    [la.Text(f"Pressure: {pres}", key = "pres" ,font = ("Helvetica", 15)), la.Push(), la.Text(f"Inside Pressure: ", font = ("Helvetica", 15))],
-    [la.Text(f"Humidity: {hum}", key = "hum" , font = ("Helvetica", 15)), la.Push(), la.Text(f"Inside Humidity: ", font = ("Helvetica", 15))],
+    layout_template = [[la.Text(f"Temperature: {temp}", key = "temp", font = ("Helvetica", 15)), la.Push(), la.Text(f"Inside Temperature: ", key = "itemp", font = ("Helvetica", 15))],
+    [la.Text(f"Pressure: {pres}", key = "pres" ,font = ("Helvetica", 15)), la.Push(), la.Text(f"Inside Humidity: ", key = "ihum", font = ("Helvetica", 15))],
+    [la.Text(f"Humidity: {hum}", key = "hum" , font = ("Helvetica", 15))],
     [la.Text(f"Sun Rise: {rise}", key = "rise", font = ("Helvetica", 15))],
     [la.Text(f"Sun Set: {set}", key = "set", font = ("Helvetica", 15))],
     [la.Text(f"Wind Speed: {speed}", key = "speed", font = ("Helvetica", 15))],
@@ -52,6 +52,7 @@ def One():
             window["rise"].update(f"Sun Rise: {sunriseT}")
             window["set"].update(f"Sun Set: {sunsetT}")
             window["speed"].update(f"Wind Speed: {Sspeed} mp/h")
+            window['ihum'].update(f"Inside Humidity: {}")
             
 
 
