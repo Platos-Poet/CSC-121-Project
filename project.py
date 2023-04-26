@@ -2,6 +2,9 @@
 import PySimpleGUI as la
 from requests import get, post
 from datetime import datetime
+import board
+import adafruit_dht
+sensor = adafruit_dht.DHT11(board.D13)
 
 city = "ruston"
 temp = ""
@@ -46,13 +49,16 @@ def One():
             sunsetdt = datetime.fromtimestamp(Sset)
             sunsetT = sunsetdt.strftime("%I:%M:%S %p")
             Sspeed = data["windSpeed"]
+            itemp = sensor.temperature
+            ihum = sensor.humidity
             window["temp"].update(f"Temperature: {tem}°F")
             window["pres"].update(f"Pressure: {pre} mb")
             window["hum"].update(f"Humidity: {humi}%")
             window["rise"].update(f"Sun Rise: {sunriseT}")
             window["set"].update(f"Sun Set: {sunsetT}")
             window["speed"].update(f"Wind Speed: {Sspeed} mp/h")
-            window['ihum'].update(f"Inside Humidity: {}")
+            window['ihum'].update(f"Inside Humidity: {ihum}%")
+            window['itemp'].update(f"Inside Temperature: {itemp}°F")
             
 
 
