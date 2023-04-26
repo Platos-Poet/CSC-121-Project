@@ -18,7 +18,7 @@
             function a() {
                 let city = document.getElementById("city").value;
                 
-                getData(`http://localhost:5000/weather/${city}`).then((res) => {
+                getData(`http://138.47.139.207:5000/weather/${city}`).then((res) => {
                     // console.log(res)
                     document.getElementById("weather-data").innerHTML = ""
                     Object.keys(res).forEach(e => {
