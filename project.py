@@ -38,7 +38,7 @@ def One():
             break
         if event == "Enter":
             city = values["input"]
-            data = get(f"http://192.168.16.95:5000/weather/{city}").json()
+            data = get(f"http://138.47.138.189:5000/weather/{city}").json()
             tem = data["temperature"]
             pre = data["pressure"]
             humi = data["humidity"]

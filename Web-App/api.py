@@ -36,5 +36,5 @@ def get_weather(city):
         return jsonify({'error': 'City not found'}), 404 # If API call is bad returns 404
 
 if __name__ == '__main__':
-    app.run(host="192.168.16.95")
+    app.run(host="138.47.138.189")
 
