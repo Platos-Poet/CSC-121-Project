@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 import requests
 from flask_cors import CORS
+from IP import IP
+from datetime import datetime
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -17,24 +19,27 @@ def get_weather(city):
         temperature = round(weatherData['main']['temp']) # convert temperature from Kelvin to Celsius
         humidity = weatherData['main']['humidity']
         windSpeed = weatherData['wind']['speed']
-        weatherDescription = weatherData['weather'][0]['description']
+        weatherDescription = weatherData['weather'][0]['description'].title()
         pressure = weatherData['main']['pressure']
         sunrise = weatherData["sys"]["sunrise"]
         sunset = weatherData["sys"]["sunset"]
+        sunrisedt = datetime.fromtimestamp(sunrise)
+        sunriseT = sunrisedt.strftime("%I:%M:%S %p")
+        sunsetdt = datetime.fromtimestamp(sunset)
+        sunsetT = sunsetdt.strftime("%I:%M:%S %p")
         result = {
-            'city': city,
-            'temperature': temperature,
-            'humidity': humidity,
-            'windSpeed': windSpeed,
-            'weatherDescription': weatherDescription,
-            'pressure': pressure,
-            'sunrise': sunrise,
-            'sunset': sunset
+            'City': city,
+            'Temperature': f"{temperature}°F",
+            'Humidity': f"{humidity}%",
+            'Wind Speed': f"{windSpeed} mph",
+            'Weather Description': weatherDescription,
+            'Pressure': f"{pressure} mb",
+            'Sunrise': sunriseT,
+            'Sunset': sunsetT
         }
         return jsonify(result) # Returns a dict in json format of all weather data
     else:
         return jsonify({'error': 'City not found'}), 404 # If API call is bad returns 404
 
 if __name__ == '__main__':
-    app.run(host="138.47.138.189")
-
+    app.run(host=f"{IP}")
